@@ -1,16 +1,21 @@
 {
-    "name": "Hoganshare"
-  , "version": "1.0.0"
-  , "description": "A CoffeeScript utility to share Hogan pre-compiled templates across server-side and client-side."
-  , "keywords": [
-         "shared"
-       , "template"
-       , "client-side"
-       , "hogan"
-    ]
-  , "license": "MIT"
-  , "main": "./lib/index"
-  , "dependencies": {
-        "hogan.js": ">= 2.0.x"
-    }
+	"name": "Hoganshare",
+	"author": {
+		"name": "Tancredi Trugenberger",
+		"email": "tancredi.trugenberger@gmail.com",
+		"url": "http://www.liquidimage.it"
+	},
+	"version": "1.0.0",
+	"description": "A CoffeeScript utility to share Hogan pre-compiled templates across server-side and client-side.",
+	"keywords": [
+		"shared",
+		"template",
+		"client-side",
+		"hogan"
+	],
+	"license": "MIT",
+	"main": "./lib/index",
+	"dependencies": {
+		"hogan.js": ">= 2.0.x"
+	}
 }
