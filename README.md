@@ -26,6 +26,6 @@ this.get("/templates.js", function (req, res) {
 
 All you will have to do is then include `/templates.js` in your page to have your templates assigned to the `window.templatess` object.
 
-Directories will be converted in name-spaces. E.g. `partials/sidebar.html` will be saved in `templates.partials.sidebar' as a function.
+Path and filename will used as index in the templates array. E.g. `partials/sidebar.html` will be saved as a function under templates['templates/partials/sidebar'].
 
 Enjoy!

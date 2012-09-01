@@ -18,7 +18,7 @@ getTemplates = (sharedDir, ext = "html") ->
                 .replace(".#{ext}", '')
                 template = Hogan.compile fs.readFileSync(path, "utf8"), { asString: true }
 
-                templates.push { file: path, ns: ns.replace(/(\/)/g, '.'), template: template }
+                templates.push { file: path, id: id, template: template }
 
             else fetchTemplates "#{dir}/#{file}" 
 

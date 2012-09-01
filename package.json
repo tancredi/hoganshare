@@ -5,7 +5,7 @@
 		"email": "tancredi.trugenberger@gmail.com",
 		"url": "http://www.liquidimage.it"
 	},
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A CoffeeScript utility to share Hogan pre-compiled templates across server-side and client-side.",
 	"keywords": [
 		"shared",
