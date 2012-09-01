@@ -12,7 +12,7 @@ getTemplates = (sharedDir, ext = "html") ->
             if file.substr(file.length - 5) is ".#{ext}"
 
                 path = dir + '/' + file
-                ns = path
+                id = path
                 .replace(sharedDir, '')
                 .substr(1)
                 .replace(".#{ext}", '')
