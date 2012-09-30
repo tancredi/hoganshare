@@ -1,29 +1,38 @@
 fs = require 'fs'
 Hogan = require 'hogan.js'
 
-getTemplates = (sharedDir, ext = "html") ->
-    templates = []
-    exportTemplate = Hogan.compile fs.readFileSync(__dirname + "/../views/templates.js.mustache", "utf8")
+class HoganShare
 
-    getDirFiles = (dir) -> fs.readdirSync dir
+    constructor: (dir, ext = "html") ->
+        @templates = []
+        @clientWrap = Hogan.compile fs.readFileSync(__dirname + "/../views/templates.js.mustache", "utf8")
+        @dir = dir
+        @ext = ext
+            
+    getTemplates: ->
+        @fetchTemplates @dir
+        @map()
 
-    fetchTemplates = (dir) ->
-        for file in getDirFiles dir
-            if file.substr(file.length - 5) is ".#{ext}"
+    map: ->
+        if @templates.length isnt 0 then @templates[@templates.length - 1].last = true
+        @clientWrap.render templates: @templates
 
-                path = dir + '/' + file
-                id = path
-                .replace(sharedDir, '')
+    fetchTemplates: (dir) -> @fetchTemplate file, dir for file in @getDirFiles dir
+
+    fetchTemplate: (file, dir) ->
+        if @matchesExtension file
+            path = dir + '/' + file
+            id = path
+                .replace(@dir, '')
                 .substr(1)
-                .replace(".#{ext}", '')
-                template = Hogan.compile fs.readFileSync(path, "utf8"), { asString: true }
+                .replace ".#{@ext}", ''
+            template = fs.readFileSync path, "utf8"
+            template = Hogan.compile template, { asString: true } 
+            @templates.push file: path, id: id, template: template
+        else @fetchTemplates "#{dir}/#{file}"
 
-                templates.push { file: path, id: id, template: template }
+    matchesExtension: (file) -> file.substr(file.length - 5) is ".#{@ext}"
 
-            else fetchTemplates "#{dir}/#{file}" 
+    getDirFiles: (dir) -> fs.readdirSync dir
 
-    fetchTemplates sharedDir
-    if templates.length isnt 0 then templates[templates.length - 1].last = true
-    return exportTemplate.render({ templates: templates })
-
-exports.getTemplates = getTemplates
+module.exports = HoganShare
