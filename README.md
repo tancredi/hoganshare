@@ -3,7 +3,7 @@ Hoganshare
 
 A CoffeeScript utility to share Hogan pre-compiled templates across server-side and client-side.
 
-[![Build Status](https://secure.travis-ci.org/tancredi/hoganshare.png?branch=master)](http://travis-ci.org/tancredi/personal-website)
+[![Build Status](https://travis-ci.org/tancredi/hoganshare.png?branch=master)](http://travis-ci.org/tancredi/hoganshare)
 
 Given a directory name and an extension (optional - set as .html by default) Hoganshare will return a javascript string that declares all found templates as compiled function, saving them under `window.templates` namespace.
 
